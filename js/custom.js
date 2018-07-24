@@ -147,6 +147,9 @@ function make_hiragana_tbody(){
 }
 
 function save_character(is_vertical){
+	if(document.getElementById("time_ms").value == ''){
+		return false;
+	}
 	if(is_vertical == true){
 		var r_max = 10;
 		var c_max = 5;
@@ -173,26 +176,40 @@ function save_character(is_vertical){
 
 function get_loops(is_random){
 	if(is_random == "TRUE"){
-		save_character(false);
-		for(var i = 0; i < parseInt(document.getElementById("loops").value); i++){
-			loops[i] = Math.floor((Math.random()*100)*(total/99));
-			if(i != 0){
-				while(loops[i-1] == loops[i]){
-					loops[i] = Math.floor((Math.random()*100)*(total/99));
+		if(save_character(false) != false){
+			for(var i = 0; i < parseInt(document.getElementById("loops").value); i++){
+				loops[i] = Math.floor((Math.random()*100)*(total/99));
+				if(i != 0){
+					while(loops[i-1] == loops[i]){
+						loops[i] = Math.floor((Math.random()*100)*(total/99));
+					}
 				}
 			}
+			return loops;
+		} else {
+			return false;
 		}
-		return loops;
 	} else {
-		save_character(true);
-		loops = character;
-		return loops;
+		if(save_character(true) != false){
+			loops = character;
+			return loops;
+		} else {
+			return false;
+		}
 	}
 }
 
 function start_pronounce(){
-	is_random = document.querySelector('input[name=is_random]:checked').value;
-	loops = get_loops(is_random);
+	if(document.querySelector('input[name=is_random]:checked') != null){
+		is_random = document.querySelector('input[name=is_random]:checked').value;
+	} else {
+		return false;
+	}
+	if(get_loops(is_random) != false){
+		loops = get_loops(is_random);
+	} else {
+		return false;
+	}
 	count = 0;
 	if(is_random == "TRUE"){
 		interval = setInterval(function(){
