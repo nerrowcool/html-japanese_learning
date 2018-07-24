@@ -1,0 +1,33 @@
+table
+{	
+	min-width: 880px;
+	margin: auto auto;
+	border-collapse: collapse;
+	font-size: 20;
+}
+
+td, tr
+{
+	border: 1px solid black;
+}
+
+td
+{
+	text-align: center;
+	width: 78px;
+}
+
+img
+{
+	width: 70px;
+}
+
+.pronounce
+{
+	width: 2em;
+}
+
+.voice
+{
+	cursor: pointer;
+}

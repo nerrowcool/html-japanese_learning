@@ -1,0 +1,29 @@
+<html>
+<head>
+	<script src="../../js/custom.js"></script>
+	<script src="../../js/wanakana.min.js"></script>
+	<script src="../../js/responsivevoice.js"></script>
+	<meta content="text/html; charset=UTF-8" http-equiv="content-type">
+	<link rel="stylesheet" type="text/css" href="../../css/custom.css">
+</head>
+<body>
+	<table>
+		<thead>
+			<script type="text/javascript">
+				make_thead();
+			</script>
+		</thead>
+		<tbody>
+			<script type="text/javascript">
+				make_hiragana_tbody();
+			</script>
+		</tbody>
+	</table>
+	<span>Read words: </span>
+	<br><span>Rounds: </span><input type="text" id="loops"><span>(ignore if not random)</span>
+	<br><span>Interval: </span><input type="text" id="time_ms"><span>(may cause bug if too small)</span>
+	<br><span>Random: </span><input type="radio" name="is_random" id="isRandom" value="TRUE"><label for="isRandom">Yes</label><input type="radio" name="is_random" value="FALSE" id="notRandom"><label for="notRandom">No</label>
+	<br><button type="button" class="pronounce" onclick="start_pronounce();" style="width: 60px;">Start</button>
+	<button type="button" class="pronounce" onclick="stop_pronounce();" style="width: 60px;">Stop</button>
+</body>
+</html>
